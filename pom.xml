@@ -29,10 +29,4 @@
         </plugins>
     </reporting>
   
-  <useSystemClassLoader>true</useSystemClassLoader>
-
-<useManifestOnlyJar>false</useManifestOnlyJar>
-
-<forkCount>1</forkCount>
-
-</project>
+ </project>
