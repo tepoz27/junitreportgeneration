@@ -17,11 +17,32 @@
           <artifactId>surefire-junit47</artifactId>
           <version>3.0.0-M3</version>
         </dependency>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.45</version>
+      </dependency>
     </dependencies>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+      <project>junitreportgeneration</project>
+      <project.root>${basedir}</project.root>
+          <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+          <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+          <maven.compiler.source>7</maven.compiler.source>
+
+          <maven.compiler.target>7</maven.compiler.target>
+      <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+      <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+      <sonar.jacoco.reportPath>${project.root}/target/jacoco.exec</sonar.jacoco.reportPath>
+      <sonar.jacoco.itReportPath>${project.root}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
+      <sonar.language>java</sonar.language>
     </properties>
 
     <reporting>
@@ -35,6 +56,40 @@
                   <reuseForks>true</reuseForks>
                   <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
                 </configuration>
+            </plugin>
+            <plugin>
+              <groupId>org.jacoco</groupId>
+              <artifactId>jacoco-maven-plugin</artifactId>
+              <version>0.7.5.201505241946</version>
+              <executions>
+               <execution>
+                <id>agent-for-ut</id>
+                <goals>
+                 <goal>prepare-agent</goal>
+                </goals>
+                <configuration>
+                 <destFile>${sonar.jacoco.reportPath}</destFile>
+                 <append>true</append>
+                </configuration>
+               </execution>
+               <execution>
+                <id>agent-for-it</id>
+                <goals>
+                 <goal>prepare-agent-integration</goal>
+                </goals>
+                <configuration>
+                 <destFile>${sonar.jacoco.itReportPath}</destFile>
+                 <append>true</append>
+                </configuration>
+               </execution>
+               <execution>
+               <id>default-report</id>
+               <phase>prepare-package</phase>
+               <goals>
+                 <goal>report</goal>
+               </goals>
+               </execution>
+              </executions>
             </plugin>
         </plugins>
     </reporting>
