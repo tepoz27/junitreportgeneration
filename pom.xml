@@ -12,6 +12,11 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
+        <dependency>
+          <groupId>org.apache.maven.surefire</groupId>
+          <artifactId>surefire-junit47</artifactId>
+          <version>3.0.0-M3</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -25,13 +30,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
                 <version>3.0.0-M3</version>
-                <dependencies>
-                  <dependency>
-                    <groupId>org.apache.maven.surefire</groupId>
-                    <artifactId>surefire-junit47</artifactId>
-                    <version>3.0.0-M3</version>
-                  </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </reporting>
