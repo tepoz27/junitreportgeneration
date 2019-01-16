@@ -1,0 +1,2 @@
+# junitreportgeneration
+Surefire-report
