@@ -43,4 +43,13 @@ public class JUnitReportGenerationTest {
 		
 		assertEquals(300, result);
 	}
+	
+	@Test
+	public void Concattest() {
+		MyJunitClass junit = new MyJunitClass();
+		
+		String result = junit.concat("Hello ", "World!");
+		
+		assertEquals("Hello World!", result);
+	}
 }
